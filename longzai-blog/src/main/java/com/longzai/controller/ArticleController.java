@@ -1,5 +1,6 @@
 package com.longzai.controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.longzai.domain.ResponseResult;
 import com.longzai.domain.entity.Article;
 import com.longzai.service.ArticleService;
@@ -24,7 +25,7 @@ public class ArticleController {
     @GetMapping("/hotArticleList")
     public ResponseResult hotArticleList(){
         // 查询热门文章 封装成 ResponseResult进行返回
-        ResponseResult result=articleService.hotArticleList();
+        ResponseResult result =  articleService.hotArticleList();
         return result;
     }
 }
