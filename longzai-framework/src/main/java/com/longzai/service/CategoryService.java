@@ -1,6 +1,7 @@
 package com.longzai.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.longzai.domain.ResponseResult;
 import com.longzai.domain.entity.Category;
 
 
@@ -12,6 +13,7 @@ import com.longzai.domain.entity.Category;
  */
 public interface CategoryService extends IService<Category> {
 
+    ResponseResult getCategoryList();
 }
 
 
