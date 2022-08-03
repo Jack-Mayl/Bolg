@@ -19,7 +19,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("sg_category")
-public class Category  {
+public class Category implements Serializable {
     @TableId
     private Long id;
 

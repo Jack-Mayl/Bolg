@@ -18,6 +18,10 @@ public class SystemConstants
      * 文章的每页10页
      */
     public static final int ARTICLE_NUMBER_PER=10;
+    /**
+     * 文章的状态
+     */
+    public static final String STATUS_NORMAL= "0";
 
 
 
