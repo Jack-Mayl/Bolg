@@ -5,6 +5,7 @@ package com.longzai.domain.entity;
 import java.util.Date;
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
@@ -41,6 +42,12 @@ public class Article implements Serializable {
      * 所属分类id
      */
     private Long categoryId;
+
+    /**
+     * 判断字段是否存在
+     */
+    @TableField(exist = false)
+    private Long categoryName;
     /**
      * 缩略图
      */
