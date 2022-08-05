@@ -7,20 +7,25 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.longzai.Constants.SystemConstants;
 import com.longzai.domain.ResponseResult;
 import com.longzai.domain.entity.Article;
+import com.longzai.domain.entity.Category;
 import com.longzai.domain.vo.ArticleListVo;
 import com.longzai.domain.vo.HotArticleVo;
 import com.longzai.domain.vo.PageVo;
 import com.longzai.mapper.ArticleMapper;
 import com.longzai.service.ArticleService;
+import com.longzai.service.CategoryService;
 import com.longzai.utils.BeanCopyUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
 
 @Service
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
-
+    @Autowired
+    private CategoryService categoryService;
     @Override
     public ResponseResult hotArticleList() {
         // 查询热门文章 封装成 ResponseResult进行返回
@@ -60,6 +65,24 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         Page<Article> page =new Page<>(pageNum,pageSize);
         page(page,lambdaQueryWrapper);
             // 查询articleName
+        List<Article> list=page.getRecords();
+            // articleId去查询articleName进行设置
+//        for (Article article : list) {
+//            Category byId = categoryService.getById(article.getCategoryId());
+//            article.setCategoryName(byId.getName());
+//        }
+        list.stream().map(new Function<Article, Object>() {
+
+            @Override
+            public Object apply(Article article) {
+                // 获取分页id  查询分类信息 获取分类名称
+                Category byId = categoryService.getById( article.getCategoryId());
+                String name = byId.getName();
+                // 把分类名称设置给Article
+                article.setCategoryName(name);
+                return article;
+            }
+        });
             // 封装查询结果VO
         List<ArticleListVo> articleListVos = BeanCopyUtils.copyBeanList(page.getRecords(), ArticleListVo.class);
         PageVo pageVo=new PageVo(articleListVos,page.getTotal());

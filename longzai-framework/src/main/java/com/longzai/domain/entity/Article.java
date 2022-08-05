@@ -47,7 +47,7 @@ public class Article implements Serializable {
      * 判断字段是否存在
      */
     @TableField(exist = false)
-    private Long categoryName;
+    private String categoryName;
     /**
      * 缩略图
      */

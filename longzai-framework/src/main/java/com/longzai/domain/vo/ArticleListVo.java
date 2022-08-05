@@ -26,7 +26,7 @@ public class ArticleListVo {
     /**
      * 所属分类名
      */
-    private Long categoryName;
+    private String categoryName;
     /**
      * 缩略图
      */
