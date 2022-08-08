@@ -8,6 +8,7 @@ import com.longzai.Constants.SystemConstants;
 import com.longzai.domain.ResponseResult;
 import com.longzai.domain.entity.Article;
 import com.longzai.domain.entity.Category;
+import com.longzai.domain.vo.ArticleDetailVo;
 import com.longzai.domain.vo.ArticleListVo;
 import com.longzai.domain.vo.HotArticleVo;
 import com.longzai.domain.vo.PageVo;
@@ -88,5 +89,22 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         PageVo pageVo=new PageVo(articleListVos,page.getTotal());
         return ResponseResult.okResult(pageVo);
 
+    }
+
+    @Override
+    public ResponseResult getArticleDetail(Long id) {
+        // 根据id查询文章详情
+        Article article=getById(id);
+        // 转化成Vo
+        ArticleDetailVo articleDetailVo = BeanCopyUtils.copyBean(article, ArticleDetailVo.class);
+        // 根据分类id查询分类名
+        Long categoryId = articleDetailVo.getCategoryId();
+        Category byId = categoryService.getById(categoryId);
+        if(byId!=null){
+            articleDetailVo.setCategoryName(byId.getName());
+        }
+
+        // 封装响应返回
+        return ResponseResult.okResult(articleDetailVo);
     }
 }
