@@ -26,9 +26,10 @@ import java.util.stream.Collectors;
  * @since 2022-08-02 16:41:19
  */
 @Service("categoryService")
-public class CategoryServiceImpl extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
+public class CategoryServiceImpl   extends ServiceImpl<CategoryMapper, Category> implements CategoryService {
     @Autowired
     private ArticleService service;
+
     @Override
     public ResponseResult getCategoryList() {
         // 查询文章表状态已发布的
