@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class BolgLoginController {
+public class BlogLoginController {
     @Autowired
     private BolgLoginService bolgLoginService;
 
@@ -23,6 +23,10 @@ public class BolgLoginController {
             throw new SystemException(AppHttpCodeEnum.REQUIRE_USERNAME);
         }
       return   bolgLoginService.login(user);
+    }
 
+    @PostMapping("/logout")
+    public ResponseResult logout(){
+        return   bolgLoginService.logout();
     }
 }

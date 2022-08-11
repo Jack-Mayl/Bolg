@@ -9,4 +9,6 @@ import org.springframework.stereotype.Service;
 
 public interface BolgLoginService  {
     ResponseResult login(User user);
+
+    ResponseResult logout();
 }
