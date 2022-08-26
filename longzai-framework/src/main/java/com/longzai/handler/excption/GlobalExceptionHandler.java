@@ -1,10 +1,17 @@
-package com.longzai.exception;
+package com.longzai.handler.excption;
 
 import com.longzai.domain.ResponseResult;
 import com.longzai.enums.AppHttpCodeEnum;
+import com.longzai.exception.SystemException;
+import com.longzai.domain.ResponseResult;
+import com.longzai.enums.AppHttpCodeEnum;
+import com.longzai.exception.SystemException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
 
 @RestControllerAdvice
 @Slf4j

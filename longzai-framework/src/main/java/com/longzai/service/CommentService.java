@@ -1,6 +1,7 @@
 package com.longzai.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.longzai.domain.ResponseResult;
 import com.longzai.domain.entity.Comment;
 
 
@@ -12,6 +13,9 @@ import com.longzai.domain.entity.Comment;
  */
 public interface CommentService extends IService<Comment> {
 
+    ResponseResult commentList(Long articleId, Integer pageNum, Integer pageSize);
+
+    ResponseResult addComment(Comment comment);
 }
 
 
