@@ -3,6 +3,7 @@ package com.longzai.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.longzai.Constants.SystemConstants;
 import com.longzai.domain.ResponseResult;
 import com.longzai.domain.entity.Comment;
 import com.longzai.domain.vo.CommentVo;
@@ -13,7 +14,6 @@ import com.longzai.mapper.CommentMapper;
 import com.longzai.service.CommentService;
 import com.longzai.service.UserService;
 import com.longzai.utils.BeanCopyUtils;
-import com.longzai.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -32,15 +32,16 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
     private UserService userService;
 
     @Override
-    public ResponseResult commentList(Long articleId, Integer pageNum, Integer pageSize) {
+    public ResponseResult commentList(String CommentType, Long articleId, Integer pageNum, Integer pageSize) {
         // 查询对应文章的根评论
-
-
         LambdaQueryWrapper<Comment> queryWrapper=new LambdaQueryWrapper<>();
         //对应articleId进行判断
-        queryWrapper.eq(Comment::getArticleId,articleId);
+        queryWrapper.eq(SystemConstants.ARTICLE_COMMENT.equals(articleId),Comment::getArticleId,articleId);
         // 根评论 rootId为-1
         queryWrapper.eq(Comment::getRootId,-1);
+        //评论类型
+        queryWrapper.eq(Comment::getType,CommentType);
+
         // 分页查询
         Page<Comment> page=new Page(pageNum,pageSize);
         page(page,queryWrapper);
@@ -71,6 +72,8 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         save(comment);
         return ResponseResult.okResult();
     }
+
+
 
     /**
      * 根据根评论的id查询所对应的子评论的集合
