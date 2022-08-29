@@ -4,9 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-/**
- * @Author
- */
 public class PathUtils {
 
     public static String generateFilePath(String fileName){

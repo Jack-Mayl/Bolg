@@ -2,8 +2,12 @@ package com.longzai.utils;
 
 import com.longzai.domain.entity.LoginUser;
 
+import com.longzai.enums.AppHttpCodeEnum;
+import com.longzai.exception.SystemException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+
+import java.util.Objects;
 
 public class SecurityUtils
 {
@@ -13,14 +17,22 @@ public class SecurityUtils
      **/
     public static LoginUser getLoginUser()
     {
-        return (LoginUser) getAuthentication().getPrincipal();
+            LoginUser loginUser = (LoginUser) getAuthentication().getPrincipal();
+
+    return loginUser;
+
     }
 
     /**
      * 获取Authentication
      */
     public static Authentication getAuthentication() {
-        return SecurityContextHolder.getContext().getAuthentication();
+        Authentication authentication;
+
+            authentication = SecurityContextHolder.getContext().getAuthentication();
+
+
+        return authentication;
     }
 
     /**

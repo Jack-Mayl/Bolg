@@ -36,3 +36,14 @@ spring:
       logic-delete-value: 1
       logic-not-delete-value: 0
       id-type: auto
+
+
+oss:
+#  修改成自己的 ak
+    accessKey: aocb6zqr7TWnMLQQ0642EjSKCjFLEUdCGQU9v9z8
+#   修改成自己的 Sk
+    secretKey: VoDEi-YEW-G-HbFwOdK8m8YYIl31Bd8QwnthDFsl
+#    空间名称
+    bucket: xiangvlog
+#   外链链接
+    url: http://xiangvlog.xiang-xiao.com/
