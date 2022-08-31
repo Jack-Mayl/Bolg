@@ -54,7 +54,7 @@ public class BolgLoginServiceImpl implements BolgLoginService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
         // 获取userid
-        Long userId = loginUser.getUser().getId();
+        String userId = loginUser.getUser().getId();
         // 删除redis中的用户信息
         redisCache.deleteObject("bloglogin:"+userId);
         return ResponseResult.okResult();

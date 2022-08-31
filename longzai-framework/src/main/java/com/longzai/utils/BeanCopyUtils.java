@@ -15,7 +15,12 @@ public class BeanCopyUtils {
         try {
             result=clazz.newInstance();
             // 实习属性copy
-            BeanUtils.copyProperties(source,result);
+            if(result!=null) {
+                BeanUtils.copyProperties(source, result);
+            }
+
+
+
 
         } catch (InstantiationException e) {
             e.printStackTrace();

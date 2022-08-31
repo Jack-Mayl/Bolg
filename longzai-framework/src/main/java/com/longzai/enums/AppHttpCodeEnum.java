@@ -14,7 +14,9 @@ public enum AppHttpCodeEnum {
     REQUIRE_USERNAME(504, "必需填写用户名"),
     LOGIN_ERROR(505,"用户名或密码错误"),
     FILE_TYPR_ERROR(507,"文件类型错误, 只能上传png/jpg文件"),
-    CONTENT_NOtNULL(506,"内容不能为空");
+    CONTENT_NOtNULL(506,"内容不能为空"),
+    NICKNAME_EXIST(512,"昵称已存在" ),
+    LOGIN_FAILED(513,"修改失败,请重新操作" );
     int code;
     String msg;
 

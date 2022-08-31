@@ -13,7 +13,7 @@ import java.util.Date;
 public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
-        Long userId = null;
+        String userId = null;
 
             userId = SecurityUtils.getUserId();
 

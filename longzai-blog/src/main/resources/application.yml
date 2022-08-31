@@ -27,8 +27,8 @@ spring:
         min-idle: 0
   main:
     allow-circular-references: true
+mybatis-plus:
   configuration:
-    # 日志
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
@@ -36,7 +36,6 @@ spring:
       logic-delete-value: 1
       logic-not-delete-value: 0
       id-type: auto
-
 
 oss:
 #  修改成自己的 ak
@@ -47,3 +46,6 @@ oss:
     bucket: xiangvlog
 #   外链链接
     url: http://xiangvlog.xiang-xiao.com/
+
+debug: true
+

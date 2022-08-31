@@ -40,11 +40,11 @@ public class SecurityUtils
      * @return
      */
     public static Boolean isAdmin(){
-        Long id = getLoginUser().getUser().getId();
-        return id != null && 1L == id;
+       String id = getLoginUser().getUser().getId();
+        return id != null &&  id.equals("1");
     }
 
-    public static Long getUserId() {
+    public static String getUserId() {
         return getLoginUser().getUser().getId();
     }
 }
