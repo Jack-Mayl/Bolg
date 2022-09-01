@@ -1,5 +1,6 @@
 package com.longzai.controller;
 
+import com.longzai.annotation.SystemLog;
 import com.longzai.domain.ResponseResult;
 import com.longzai.domain.entity.User;
 import com.longzai.service.UserService;
@@ -16,6 +17,7 @@ public class UserController {
         return userService.userInfo();
     }
     @PutMapping("/userInfo")
+    @SystemLog(businessName = "更新用户信息")
     public ResponseResult updateUserInfo(@RequestBody User user){
         return userService.updateUserInfo(user);
     }
