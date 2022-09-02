@@ -20,10 +20,9 @@ import javax.servlet.http.HttpServletRequest;
 public class LogAspect {
 
     @Pointcut("@annotation(com.longzai.annotation.SystemLog)")
-
     public void pt(){}
 
-//    @Around("pu()")
+    @Around("pt()")
     public Object printLog(ProceedingJoinPoint joinPoint) throws Throwable {
         Object proceed;
         try {

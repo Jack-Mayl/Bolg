@@ -16,6 +16,7 @@ import com.longzai.mapper.ArticleMapper;
 import com.longzai.service.ArticleService;
 import com.longzai.service.CategoryService;
 import com.longzai.utils.BeanCopyUtils;
+import com.longzai.utils.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,8 @@ import java.util.function.Function;
 public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    private RedisCache redisCache;
     @Override
     public ResponseResult hotArticleList() {
         // 查询热门文章 封装成 ResponseResult进行返回
@@ -106,5 +109,12 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
         // 封装响应返回
         return ResponseResult.okResult(articleDetailVo);
+    }
+
+    @Override
+    public ResponseResult updateViewCount(Long id) {
+        // 更新redis 中到浏览器
+//        redisCache.
+        return null;
     }
 }
